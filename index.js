@@ -15,7 +15,6 @@ async function getCategory() {
 //displaying categories
 async function displayCategories() {
     const options = await getCategory();
-    console.log(options)
     for(let i=0; i<options.trivia_categories.length; i++) {
         const newOption = document.createElement('option');
         newOption.value = options.trivia_categories[i].id;
@@ -24,3 +23,38 @@ async function displayCategories() {
     }        
 };
 displayCategories();
+
+var userCategory;
+//storing user selected category
+selectCategory.addEventListener('change', (event) => { 
+    userCategory = selectCategory.value;
+    console.log(userCategory);
+})
+
+//getting categories from API
+async function getQuestions() {
+    try {
+        const category = `https://opentdb.com/api.php?amount=10&category=${userCategory}`;
+        const res = await fetch(category);
+        const data = res.json();
+        return data;
+    } catch (err) {
+        console.log(err)
+    }            
+}   
+
+//getting questions
+const start = document.getElementById('startQuiz');
+start.addEventListener('click', (event) => {
+    if(userCategory) {
+        let questionsList = getQuestions();
+        let questions = questionsList.then(result => print(result));
+    }    
+})
+
+const print = (result) => {
+        console.log(result);
+        for(let i=0; i<result.results.length; i++) {
+            console.log(result.results[i].question)
+    }
+}
