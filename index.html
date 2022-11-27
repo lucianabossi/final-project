@@ -5,9 +5,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Final project is the new title</h1>
-    <p>This is the start of a great adventure</p>
+    <div class="quizhub__home">
+        <div class="quizhub__title">
+            <h1>QUIZhub</h1>
+        </div>
+        <div>
+            <select name="category" id="categories" class="quizhub__dropdown">
+                <option value="">Select category...</option>
+            </select>
+        </div>
+            <button class="quizhub__start__btn" id="startQuiz">START</button>
+    </div>
+    <div class="quizhub__cards">
+        <div class="quizhub__questions__card" id="questionsCard"></div>
+        <div class="quizhub__answers__card" id="answerA"></div>
+        <div class="quizhub__answers__card" id="answerB"></div>
+        <div class="quizhub__answers__card" id="answerC"></div>
+        <div class="quizhub__answers__card" id="answerD"></div>
+        <button id="btnOk">OK</button>
+        <button id="btnNext">next</button>
+        <p>01/10</p>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
