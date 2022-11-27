@@ -24,8 +24,8 @@ async function displayCategories() {
 };
 displayCategories();
 
-var userCategory;
 //storing user selected category
+var userCategory;
 selectCategory.addEventListener('change', (event) => { 
     userCategory = selectCategory.value;
 })
@@ -33,7 +33,7 @@ selectCategory.addEventListener('change', (event) => {
 //getting categories from API
 async function getQuestions() {
     try {
-        const category = `https://opentdb.com/api.php?amount=10&category=${userCategory}`;
+        const category = `https://opentdb.com/api.php?amount=10&type=multiple&category=${userCategory}`;
         const res = await fetch(category);
         const data = res.json();
         return data;
@@ -43,18 +43,19 @@ async function getQuestions() {
 }   
 
 //creating questions
+var index = 0;
 const start = document.getElementById('startQuiz');
 start.addEventListener('click', (event) => {
     if(userCategory) {
         let questionsList = getQuestions();
-        questionsList.then(result => save(result));
+        questionsList.then(result => { 
+            save(result);
+            printQuestion(index);
+            index++;
+        });
     }    
 })
  
-var questionsApi = [];
-var correctAnswersApi = [];
-var incorrectAnswersApi = [];  
-
 //getting questions and answers id
 var question = document.querySelector('#questionsCard');
 var answerA = document.querySelector('#answer0');
@@ -62,40 +63,53 @@ var answerB = document.querySelector('#answer1');
 var answerC = document.querySelector('#answer2');
 var answerD = document.querySelector('#answer3');
 
-let index = 0;
+
 
 //getting questions and answers
+var questionsApi = [];
+var correctAnswersApi = [];
+var incorrectAnswersApi = []; 
+
 const save = (result) => { 
     for(let i=0; i<result.results.length; i++) {
         questionsApi.push(result.results[i].question);
         correctAnswersApi.push(result.results[i].correct_answer);
         incorrectAnswersApi.push(result.results[i].incorrect_answers);
-        console.log(result);
-        console.log('question: ' + questionsApi[i]);
-        console.log('correct answer: ' + correctAnswersApi[i]);
-        console.log('incorrect answer: ' + incorrectAnswersApi[i]);
-    }
-    //printing first question and answers
+        //console.log(result);
+        //console.log('question: ' + questionsApi[i]);
+        //console.log('correct answer: ' + correctAnswersApi[i]);
+        //console.log('incorrect answer: ' + incorrectAnswersApi[i]);
+    }    
+};
+
+//printing first question and answers
+const printQuestion = (index) => {
     question.innerHTML = questionsApi[index];
     answerA.innerHTML = correctAnswersApi[index];
     let cont = 1;
-    for(let i=0; i<incorrectAnswersApi.length; i++) {
+    for(let i=0; i<incorrectAnswersApi[index].length; i++) {
+        console.log(incorrectAnswersApi[index]);
+        console.log(cont);
         var answer = document.querySelector('#answer'+cont);
+        console.log(answer);
         answer.innerHTML = incorrectAnswersApi[index][i];
         cont++;
     }   
-};
+}
 
-const buttonOk = document.querySelector('btnOk');
-const buttonNext = document.querySelector('btnNext');
 
 //printing questions and answers
-/*buttonNext.addEventListener('click', (event) => {
-
+const buttonNext = document.querySelector('#btnNext');
+buttonNext.addEventListener('click', (event) => {
+    //console.log(index);
+    printQuestion(index);
+    
+    index++;
 });
 
 //checking answers
-buttonOk.addEventListener('click', (event) => {
+const buttonOk = document.querySelector('#btnOk');
+/*buttonOk.addEventListener('click', (event) => {
 
 });*/
 //printing questions
