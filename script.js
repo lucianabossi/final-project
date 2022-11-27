@@ -28,7 +28,6 @@ var userCategory;
 //storing user selected category
 selectCategory.addEventListener('change', (event) => { 
     userCategory = selectCategory.value;
-    console.log(userCategory);
 })
 
 //getting categories from API
@@ -48,13 +47,41 @@ const start = document.getElementById('startQuiz');
 start.addEventListener('click', (event) => {
     if(userCategory) {
         let questionsList = getQuestions();
-        let questions = questionsList.then(result => print(result));
+        questionsList.then(result => save(result));
     }    
 })
 
-const print = (result) => {
+//getting questions and answers
+const save = (result) => {
+    var questionsApi = [];
+    var answersApi = [];
+    for(let i=0; i<result.results.length; i++) {
+        questionsApi.push(result.results[i].question);
+        answersApi.push(result.results[i].correct_answer)
+        console.log(result);
+        console.log('question: ' + questionsApi[i]);
+        console.log('correct answer: ' + answersApi[i]);
+    }
+};
+
+
+
+const buttonOk = document.querySelector('btnOk');
+const buttonNext = document.querySelector('btnNext');
+
+//printing questions and answers
+/*buttonNext.addEventListener('click', (event) => {
+
+});
+
+//checking answers
+buttonOk.addEventListener('click', (event) => {
+
+});*/
+//printing questions
+/*const print = (result) => {
         console.log(result);
         for(let i=0; i<result.results.length; i++) {
             console.log(result.results[i].question)
     }
-}
+}*/

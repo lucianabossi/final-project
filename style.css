@@ -33,3 +33,28 @@ body {
     color: #f9f9f9;
     cursor: pointer;
 }
+
+.quizhub__cards {
+    display: block;
+    width: 60vw;
+    height: 80vh;
+    background-color: pink;
+    margin: 10px auto;
+    padding: 20px;
+}
+
+.quizhub__questions__card {
+    display: block;
+    width: 58vw;
+    height: 16vh;
+    background-color: lightgrey;
+    margin: 20px;
+}
+
+.quizhub__answers__card {
+    display: block;
+    width: 58vw;
+    height: 10vh;
+    background-color: lightgrey;
+    margin: 20px;
+}
