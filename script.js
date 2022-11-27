@@ -50,12 +50,20 @@ start.addEventListener('click', (event) => {
         questionsList.then(result => save(result));
     }    
 })
-
  
 var questionsApi = [];
 var correctAnswersApi = [];
 var incorrectAnswersApi = [];  
-    
+
+//getting questions and answers id
+var question = document.querySelector('#questionsCard');
+var answerA = document.querySelector('#answer0');
+var answerB = document.querySelector('#answer1');
+var answerC = document.querySelector('#answer2');
+var answerD = document.querySelector('#answer3');
+
+let index = 0;
+
 //getting questions and answers
 const save = (result) => { 
     for(let i=0; i<result.results.length; i++) {
@@ -67,6 +75,7 @@ const save = (result) => {
         console.log('correct answer: ' + correctAnswersApi[i]);
         console.log('incorrect answer: ' + incorrectAnswersApi[i]);
     }
+    //printing first question and answers
     question.innerHTML = questionsApi[index];
     answerA.innerHTML = correctAnswersApi[index];
     let cont = 1;
@@ -74,24 +83,8 @@ const save = (result) => {
         var answer = document.querySelector('#answer'+cont);
         answer.innerHTML = incorrectAnswersApi[index][i];
         cont++;
-    }
-
-   
+    }   
 };
-
-//printing questions and answers
-var question = document.querySelector('#questionsCard');
-var answerA = document.querySelector('#answer0');
-var answerB = document.querySelector('#answer1');
-var answerC = document.querySelector('#answer2');
-var answerD = document.querySelector('#answer3');
-
-let index = 0;
-
-//const paragraph = document.createElement('p');
-//paragraph.innerText = questionsApi[index];
-//question.innerText = questionsApi[index];
-
 
 const buttonOk = document.querySelector('btnOk');
 const buttonNext = document.querySelector('btnNext');
