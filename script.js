@@ -67,16 +67,24 @@ const save = (result) => {
         console.log('correct answer: ' + correctAnswersApi[i]);
         console.log('incorrect answer: ' + incorrectAnswersApi[i]);
     }
-    console.log('question using let index' + questionsApi[index]);
     question.innerHTML = questionsApi[index];
+    answerA.innerHTML = correctAnswersApi[index];
+    let cont = 1;
+    for(let i=0; i<incorrectAnswersApi.length; i++) {
+        var answer = document.querySelector('#answer'+cont);
+        answer.innerHTML = incorrectAnswersApi[index][i];
+        cont++;
+    }
+
+   
 };
 
 //printing questions and answers
 var question = document.querySelector('#questionsCard');
-var answerA = document.querySelector('answerA');
-var answerB = document.querySelector('answerB');
-var answerC = document.querySelector('answerC');
-var answerD = document.querySelector('answerD');
+var answerA = document.querySelector('#answer0');
+var answerB = document.querySelector('#answer1');
+var answerC = document.querySelector('#answer2');
+var answerD = document.querySelector('#answer3');
 
 let index = 0;
 
