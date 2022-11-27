@@ -42,7 +42,7 @@ async function getQuestions() {
     }            
 }   
 
-//getting questions
+//creating questions
 const start = document.getElementById('startQuiz');
 start.addEventListener('click', (event) => {
     if(userCategory) {
@@ -51,19 +51,38 @@ start.addEventListener('click', (event) => {
     }    
 })
 
+ 
+var questionsApi = [];
+var correctAnswersApi = [];
+var incorrectAnswersApi = [];  
+    
 //getting questions and answers
-const save = (result) => {
-    var questionsApi = [];
-    var answersApi = [];
+const save = (result) => { 
     for(let i=0; i<result.results.length; i++) {
         questionsApi.push(result.results[i].question);
-        answersApi.push(result.results[i].correct_answer)
+        correctAnswersApi.push(result.results[i].correct_answer);
+        incorrectAnswersApi.push(result.results[i].incorrect_answers);
         console.log(result);
         console.log('question: ' + questionsApi[i]);
-        console.log('correct answer: ' + answersApi[i]);
+        console.log('correct answer: ' + correctAnswersApi[i]);
+        console.log('incorrect answer: ' + incorrectAnswersApi[i]);
     }
+    console.log('question using let index' + questionsApi[index]);
+    question.innerHTML = questionsApi[index];
 };
 
+//printing questions and answers
+var question = document.querySelector('#questionsCard');
+var answerA = document.querySelector('answerA');
+var answerB = document.querySelector('answerB');
+var answerC = document.querySelector('answerC');
+var answerD = document.querySelector('answerD');
+
+let index = 0;
+
+//const paragraph = document.createElement('p');
+//paragraph.innerText = questionsApi[index];
+//question.innerText = questionsApi[index];
 
 
 const buttonOk = document.querySelector('btnOk');
