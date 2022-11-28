@@ -8,6 +8,30 @@ body {
     background-color: #4EADFF;
 }
 
+.quizhub__cursor__pointer {
+    cursor: pointer;
+}
+
+.quizhub__display__none {
+    display: none;
+}
+
+.quizhub__background__green {
+    background-color: #00FF00;
+}
+
+.quizhub__background__red {
+    background-color: #F20101;
+}
+
+.quizhub__border {
+    border: 1px solid #000;
+}
+
+.quizhub__background__gray {    
+    background-color: lightgrey;
+}
+
 .quizhub__home {
     width: 45vw;
     font-family: 'Press Start 2P', cursive; 
@@ -55,6 +79,5 @@ body {
     display: block;
     width: 58vw;
     height: 10vh;
-    background-color: lightgrey;
     margin: 20px;
 }
