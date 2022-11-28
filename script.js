@@ -93,21 +93,33 @@ const printQuestion = (index) => {
  //storing user answer
  var userAnswer;
  answerA.addEventListener('click', (event) => {
+    document.querySelectorAll('div.quizhub__answers__card').forEach(function (elem) {
+        elem.classList.remove('quizhub__border');
+        });
     userAnswer = answerA;
     userAnswer.classList.add('quizhub__border');
  });
 
  answerB.addEventListener('click', (event) => {
+    document.querySelectorAll('div.quizhub__answers__card').forEach(function (elem) {
+        elem.classList.remove('quizhub__border');
+        });
     userAnswer = answerB;
     userAnswer.classList.add('quizhub__border');
  });
 
  answerC.addEventListener('click', (event) => {
+    document.querySelectorAll('div.quizhub__answers__card').forEach(function (elem) {
+        elem.classList.remove('quizhub__border');
+        });
     userAnswer = answerC;
     userAnswer.classList.add('quizhub__border');
  });
 
  answerD.addEventListener('click', (event) => {
+     document.querySelectorAll('div.quizhub__answers__card').forEach(function (elem) {
+    elem.classList.remove('quizhub__border');
+    });
     userAnswer = answerD;
     userAnswer.classList.add('quizhub__border');
  });
@@ -140,7 +152,7 @@ buttonNext.addEventListener('click', (event) => {
     document.querySelectorAll('div').forEach(function (elem) {
         elem.classList.remove('quizhub__background__red', 'quizhub__background__green', 'quizhub__border');
     });
-    document.querySelectorAll('div').forEach(function (elem) {
+    document.querySelectorAll('div.quizhub__answers__card').forEach(function (elem) {
         elem.classList.add('quizhub__background__gray');
     });
 });
