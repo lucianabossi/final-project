@@ -132,13 +132,19 @@ buttonOk.addEventListener('click', (event) => {
         answerA.classList.add('quizhub__background__green');
     } else if (userAnswer===answerB){  
         answerB.classList.remove('quizhub__background__gray');
-        answerB.classList.add('quizhub__background__red');      
+        answerB.classList.add('quizhub__background__red'); 
+        answerA.classList.remove('quizhub__background__gray');
+        answerA.classList.add('quizhub__background__green');     
     } else if (userAnswer===answerC){ 
         answerC.classList.remove('quizhub__background__gray');
-        answerC.classList.add('quizhub__background__red');       
+        answerC.classList.add('quizhub__background__red');
+        answerA.classList.remove('quizhub__background__gray'); 
+        answerA.classList.add('quizhub__background__green');      
     } else if (userAnswer===answerD){
         answerD.classList.remove('quizhub__background__gray');   
-        answerD.classList.add('quizhub__background__red');     
+        answerD.classList.add('quizhub__background__red'); 
+        answerA.classList.remove('quizhub__background__gray');
+        answerA.classList.add('quizhub__background__green');    
     } 
     buttonNext.classList.remove('quizhub__display__none');
 });
@@ -154,5 +160,8 @@ buttonNext.addEventListener('click', (event) => {
     });
     document.querySelectorAll('div.quizhub__answers__card').forEach(function (elem) {
         elem.classList.add('quizhub__background__gray');
-    });
+    });   
+    let counter = document.querySelector('#questionNumber');
+    let number = parseInt(counter.innerText)+1;
+    counter.innerText = number;
 });
