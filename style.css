@@ -64,10 +64,10 @@ body {
 
 .quizhub__cards {
     width: 65vw;
-    height: max-content;
+    height: fit-content;
     background-color: #EBEBED;
-    margin: 15vh auto;
-    padding: 20px;
+    margin: 5vh auto;
+    padding: 10px;
     border-radius: 20px;
 }
 
