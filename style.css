@@ -33,7 +33,7 @@ body {
 }
 
 .quizhub__background__gray {    
-    background-color: lightgrey;
+    background-color: #F9F9F9;
 }
 
 .quizhub__home {
@@ -63,24 +63,54 @@ body {
 }
 
 .quizhub__cards {
-    width: 60vw;
-    height: 80vh;
-    background-color: pink;
-    margin: 10px auto;
+    width: 65vw;
+    height: max-content;
+    background-color: #EBEBED;
+    margin: 15vh auto;
     padding: 20px;
+    border-radius: 20px;
 }
 
 .quizhub__questions__card {
     display: block;
     width: 58vw;
-    height: 16vh;
-    background-color: lightgrey;
-    margin: 20px;
+    height: max-content;
+    background-color: #F9F9F9;
+    margin: 35px;
+    font-family: 'Roboto mono';
+    font-size: 1.7rem;
+    text-align: justify;
+    line-height: 1cm;
+    padding: 10px;
 }
 
 .quizhub__answers__card {
     display: block;
     width: 58vw;
-    height: 10vh;
-    margin: 20px;
+    height: max-content;
+    margin: 35px;
+    font-family: 'Roboto mono';
+    font-size: 1.5rem;
+    text-align: justify;
+    line-height: 1cm;
+    text-indent: 0.5cm;
+    padding: 10px;
+}
+
+#btnOk, #btnNext {
+    width: 90px;
+    height: 40px;
+    background-color: #F9F9F9;
+    font-family: 'Roboto mono';
+    font-size: 1.5rem;
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+    margin: 10px auto 0;
+}
+
+#questionNumber {
+    font-family: 'Roboto mono';
+    font-size: 1.2rem;
+    text-align: right;
 }

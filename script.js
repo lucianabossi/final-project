@@ -157,6 +157,9 @@ buttonOk.addEventListener('click', (event) => {
         answerA.classList.add('quizhub__background__green');    
     } 
     buttonNext.classList.remove('quizhub__display__none');
+    buttonNext.classList.add('quizhub__display__block');
+    buttonOk.classList.remove('quizhub__display__block');
+    buttonOk.classList.add('quizhub__display__none');
 });
 
 //printing questions and answers
@@ -164,7 +167,6 @@ const buttonNext = document.querySelector('#btnNext');
 buttonNext.addEventListener('click', (event) => {
     printQuestion(index);    
     index++;
-    buttonNext.classList.add('quizhub__display__none');
     document.querySelectorAll('div').forEach(function (elem) {
         elem.classList.remove('quizhub__background__red', 'quizhub__background__green', 'quizhub__border');
     });
@@ -173,5 +175,9 @@ buttonNext.addEventListener('click', (event) => {
     });   
     let counter = document.querySelector('#questionNumber');
     let number = parseInt(counter.innerText)+1;
-    counter.innerText = number+'/10';
+    counter.innerText = number+'/10';    
+    buttonNext.classList.remove('quizhub__display__block');
+    buttonNext.classList.add('quizhub__display__none');
+    buttonOk.classList.remove('quizhub__display__none');
+    buttonOk.classList.add('quizhub__display__block');
 });
