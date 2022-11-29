@@ -28,6 +28,7 @@ displayCategories();
 var userCategory;
 selectCategory.addEventListener('change', (event) => { 
     userCategory = selectCategory.value;
+    start.classList.remove('quizhub__display__none');
 })
 
 //getting categories from API
