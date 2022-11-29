@@ -16,6 +16,10 @@ body {
     display: none;
 }
 
+.quizhub__display__block {
+    display: block;
+}
+
 .quizhub__background__green {
     background-color: #00FF00;
 }
@@ -59,7 +63,6 @@ body {
 }
 
 .quizhub__cards {
-    display: block;
     width: 60vw;
     height: 80vh;
     background-color: pink;

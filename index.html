@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="quizhub__home">
-        <div class="quizhub__title">
+        <div class="quizhub__title" id="quizhub">
             <h1>QUIZhub</h1>
         </div>
         <div>
@@ -19,7 +19,7 @@
         </div>
             <button class="quizhub__start__btn" id="startQuiz">START</button>
     </div>
-    <div class="quizhub__cards">
+    <div class="quizhub__cards quizhub__display__none" id="quizhubCard">
         <div class="quizhub__questions__card" id="questionsCard"></div>
         <div class="quizhub__answers__card quizhub__background__gray quizhub__cursor__pointer" id="answer0"></div>
         <div class="quizhub__answers__card quizhub__background__gray quizhub__cursor__pointer" id="answer1"></div>
@@ -27,7 +27,7 @@
         <div class="quizhub__answers__card quizhub__background__gray quizhub__cursor__pointer" id="answer3"></div>
         <button id="btnOk" class="quizhub__cursor__pointer">OK</button>
         <button id="btnNext" class="quizhub__display__none quizhub__cursor__pointer">next</button>
-        <p id="questionNumber">01</p>
+        <p id="questionNumber">1/10</p>
     </div>
 
     <script src="script.js"></script>

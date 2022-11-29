@@ -42,6 +42,11 @@ async function getQuestions() {
     }            
 }   
 
+//getting home ids
+const quizhub = document.getElementById('quizhub');
+const dropdown = document.getElementById('categories');
+const card = document.getElementById('quizhubCard');
+
 //creating questions
 var index = 0;
 const start = document.getElementById('startQuiz');
@@ -53,7 +58,12 @@ start.addEventListener('click', (event) => {
             printQuestion(index);
             index++;
         });
-    }    
+    }  
+    quizhub.classList.add('quizhub__display__none');
+    dropdown.classList.add('quizhub__display__none');
+    card.classList.remove('quizhub__display__none');
+    card.classList.add('quizhub__display__block');
+    start.classList.add('quizhub__display__none');
 })
  
 //getting questions and answers id
@@ -163,5 +173,5 @@ buttonNext.addEventListener('click', (event) => {
     });   
     let counter = document.querySelector('#questionNumber');
     let number = parseInt(counter.innerText)+1;
-    counter.innerText = number;
+    counter.innerText = number+'/10';
 });
