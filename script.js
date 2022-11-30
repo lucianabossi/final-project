@@ -74,8 +74,6 @@ var answerB = document.querySelector('#answer1');
 var answerC = document.querySelector('#answer2');
 var answerD = document.querySelector('#answer3');
 
-
-
 //getting questions and answers
 var questionsApi = [];
 var correctAnswersApi = [];
@@ -86,8 +84,16 @@ const save = (result) => {
         questionsApi.push(result.results[i].question);
         correctAnswersApi.push(result.results[i].correct_answer);
         incorrectAnswersApi.push(result.results[i].incorrect_answers);
-    }    
+    }  
+    var allAnswers = correctAnswersApi.map(function() {
+        return [correctAnswersApi[index], incorrectAnswersApi[index]];
+    });
+    console.log('array of all answers ' + allAnswers[index]);
+    const shuffledAnswers = allAnswers[index].sort(()=>Math.random()-0.5);
+    console.log('shuffled ' + shuffledAnswers);  
 };
+
+
 
 //printing first question and answers
 const printQuestion = (index) => {
@@ -103,67 +109,48 @@ const printQuestion = (index) => {
 
  //storing user answer
  var userAnswer;
- answerA.addEventListener('click', (event) => {
-    document.querySelectorAll('div.quizhub__answers__card').forEach(function (elem) {
-        elem.classList.remove('quizhub__border');
+ const answers = document.querySelectorAll('.quizhub__answers__card').forEach(item => {
+     item.addEventListener('click', event => {
+        document.querySelectorAll('.quizhub__answers__card').forEach(element => {
+            element.classList.remove('quizhub__border');
         });
-    userAnswer = answerA;
-    userAnswer.classList.add('quizhub__border');
+        item.classList.add('quizhub__border');         
+        userAnswer = item.innerText;      
+     })
  });
-
- answerB.addEventListener('click', (event) => {
-    document.querySelectorAll('div.quizhub__answers__card').forEach(function (elem) {
-        elem.classList.remove('quizhub__border');
-        });
-    userAnswer = answerB;
-    userAnswer.classList.add('quizhub__border');
- });
-
- answerC.addEventListener('click', (event) => {
-    document.querySelectorAll('div.quizhub__answers__card').forEach(function (elem) {
-        elem.classList.remove('quizhub__border');
-        });
-    userAnswer = answerC;
-    userAnswer.classList.add('quizhub__border');
- });
-
- answerD.addEventListener('click', (event) => {
-     document.querySelectorAll('div.quizhub__answers__card').forEach(function (elem) {
-    elem.classList.remove('quizhub__border');
-    });
-    userAnswer = answerD;
-    userAnswer.classList.add('quizhub__border');
- });
-
+ 
  //checking answers
+ var ind = 0;
 const buttonOk = document.querySelector('#btnOk');
 buttonOk.addEventListener('click', (event) => {
-    if(userAnswer===answerA) {
-        answerA.classList.remove('quizhub__background__gray');
-        answerA.classList.add('quizhub__background__green');
-    } else if (userAnswer===answerB){  
-        answerB.classList.remove('quizhub__background__gray');
-        answerB.classList.add('quizhub__background__red'); 
-        answerA.classList.remove('quizhub__background__gray');
-        answerA.classList.add('quizhub__background__green');     
-    } else if (userAnswer===answerC){ 
-        answerC.classList.remove('quizhub__background__gray');
-        answerC.classList.add('quizhub__background__red');
-        answerA.classList.remove('quizhub__background__gray'); 
-        answerA.classList.add('quizhub__background__green');      
-    } else if (userAnswer===answerD){
-        answerD.classList.remove('quizhub__background__gray');   
-        answerD.classList.add('quizhub__background__red'); 
-        answerA.classList.remove('quizhub__background__gray');
-        answerA.classList.add('quizhub__background__green');    
-    } 
+    console.log('user answer' + userAnswer);
+    console.log('correct '+ correctAnswersApi[ind]);
+    if(userAnswer === correctAnswersApi[ind]) {
+        userAnswer = correctAnswersApi[ind];
+        userAnswer.classList.remove('quizhub__background__gray');
+        userAnswer.classList.add('quizhub__background__green');
+        console.log('entrou')
+    };
+
+    console.log('user answer' + userAnswer);
+    console.log(userAnswer);
+    console.log('incorrect ' + incorrectAnswersApi[ind]);
+    if(userAnswer === incorrectAnswersApi[ind])  {
+        userAnswer = incorrectAnswersApi[ind];
+        userAnswer.classList.remove('quizhub__background__gray');
+        userAnswer.classList.add('quizhub__background__red');
+        correctAnswersApi[ind].classList.add('quizhub__background__green');
+        console.log('entrou na errada')
+    };
+    
     buttonNext.classList.remove('quizhub__display__none');
     buttonNext.classList.add('quizhub__display__block');
     buttonOk.classList.remove('quizhub__display__block');
     buttonOk.classList.add('quizhub__display__none');
+    ind++;
 });
 
-//printing questions and answers
+//printing next questions and answers
 const buttonNext = document.querySelector('#btnNext');
 buttonNext.addEventListener('click', (event) => {
     printQuestion(index);    
