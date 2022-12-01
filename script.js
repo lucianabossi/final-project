@@ -1,6 +1,14 @@
 //getting select from html
 const selectCategory = document.getElementById('categories');
 
+//display select
+function displayDropDown() {
+    setTimeout(function() {
+        selectCategory.style.opacity='1';
+    }, 4000);
+}
+displayDropDown();
+
 //getting category from API
 async function getCategory() {
     try {
