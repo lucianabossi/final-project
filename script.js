@@ -59,15 +59,14 @@ const card = document.getElementById('quizhubCard');
 const logo = document.getElementById('logo');
 
 //initializing questions
-var index = 0;
+var indexQuestion = 0;
 const start = document.getElementById('startQuiz');
 start.addEventListener('click', (event) => {
     if(userCategory) {
         let questionsList = getQuestions();
         questionsList.then(result => { 
             save(result);
-            printQuestion(index);
-            index++;
+            printQuestion(indexQuestion);
         });
     } 
     quizhub.classList.remove('quizhub__display__block'); 
@@ -112,12 +111,12 @@ const save = (result) => {
 };
 
 //printing first question and answers
-const printQuestion = (index) => {
-    question.innerHTML = questionsApi[index];
+const printQuestion = (indexQuestion) => {
+    question.innerHTML = questionsApi[indexQuestion];
     //creating array with incorrect answers
-    incorrect = incorrectAnswersApi[index].slice();
+    incorrect = incorrectAnswersApi[indexQuestion].slice();
     //creating array with all answers
-    correctAnswerConcat = [correctAnswersApi[index]];
+    correctAnswerConcat = [correctAnswersApi[indexQuestion]];
     answer = correctAnswerConcat.concat(incorrect);
     let answersOptions = [answerA, answerB, answerC, answerD];
     for(let i=0; i<answer.length; i++) {
@@ -138,13 +137,12 @@ const printQuestion = (index) => {
  });
  
  //checking answers
- var ind = 0;
 const buttonOk = document.querySelector('#btnOk');
 buttonOk.addEventListener('click', (event) => {
     console.log('user answer' + userAnswer);
-    console.log('correct '+ correctAnswersApi[ind]);
-    if(userAnswer === correctAnswersApi[ind]) {
-        userAnswer = correctAnswersApi[ind];
+    console.log('correct '+ correctAnswersApi[indexQuestion]);
+    if(userAnswer === correctAnswersApi[indexQuestion]) {
+        userAnswer = correctAnswersApi[indexQuestion];
         userAnswer.classList.remove('quizhub__background__gray');
         userAnswer.classList.add('quizhub__background__green');
         console.log('entrou')
@@ -152,27 +150,28 @@ buttonOk.addEventListener('click', (event) => {
 
     console.log('user answer' + userAnswer);
     console.log(userAnswer);
-    console.log('incorrect ' + incorrectAnswersApi[ind]);
-    if(userAnswer === incorrectAnswersApi[ind])  {
-        userAnswer = incorrectAnswersApi[ind];
-        userAnswer.classList.remove('quizhub__background__gray');
-        userAnswer.classList.add('quizhub__background__red');
-        correctAnswersApi[ind].classList.add('quizhub__background__green');
-        console.log('entrou na errada')
-    };
+    console.log('incorrect ' + incorrectAnswersApi[indexQuestion]);
+    for(let i=0; i<incorrectAnswersApi[indexQuestion]; i++) {
+        if(userAnswer === incorrectAnswersApi[indexQuestion][i]) {
+            userAnswer = incorrectAnswersApi[indexQuestion];
+            userAnswer.classList.remove('quizhub__background__gray');
+            userAnswer.classList.add('quizhub__background__red');
+            correctAnswersApi[indexQuestion].classList.add('quizhub__background__green');
+            console.log('entrou na errada')
+        }
+    }
     
     buttonNext.classList.remove('quizhub__display__none');
     buttonNext.classList.add('quizhub__display__block');
     buttonOk.classList.remove('quizhub__display__block');
     buttonOk.classList.add('quizhub__display__none');
-    ind++;
 });
 
 //printing next questions and answers
 const buttonNext = document.querySelector('#btnNext');
-buttonNext.addEventListener('click', (event) => {
-    printQuestion(index);        
-    index++;
+buttonNext.addEventListener('click', (event) => {            
+    indexQuestion++;
+    printQuestion(indexQuestion);
     document.querySelectorAll('div').forEach(function (elem) {
         elem.classList.remove('quizhub__background__red', 'quizhub__background__green', 'quizhub__border');
     });
