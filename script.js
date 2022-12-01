@@ -126,12 +126,14 @@ const printQuestion = (indexQuestion) => {
 
  //storing user answer
  var userAnswer;
+ var userAnswerId;
  const answers = document.querySelectorAll('.quizhub__answers__card').forEach(item => {
      item.addEventListener('click', event => {
         document.querySelectorAll('.quizhub__answers__card').forEach(element => {
             element.classList.remove('quizhub__border');
         });
-        item.classList.add('quizhub__border');         
+        item.classList.add('quizhub__border'); 
+        userAnswerId = item.id;  
         userAnswer = item.innerText;      
      })
  });
@@ -139,25 +141,31 @@ const printQuestion = (indexQuestion) => {
  //checking answers
 const buttonOk = document.querySelector('#btnOk');
 buttonOk.addEventListener('click', (event) => {
+    let userAnswerElement = document.getElementById(userAnswerId);
     console.log('user answer' + userAnswer);
     console.log('correct '+ correctAnswersApi[indexQuestion]);
     if(userAnswer === correctAnswersApi[indexQuestion]) {
         userAnswer = correctAnswersApi[indexQuestion];
-        userAnswer.classList.remove('quizhub__background__gray');
-        userAnswer.classList.add('quizhub__background__green');
-        console.log('entrou')
+        console.log('--------')
+        console.log(userAnswer);
+        
+        userAnswerElement.classList.remove('quizhub__background__gray');
+        userAnswerElement.classList.add('quizhub__background__green');
+        console.log('entered if correct')
     };
 
     console.log('user answer' + userAnswer);
     console.log(userAnswer);
     console.log('incorrect ' + incorrectAnswersApi[indexQuestion]);
-    for(let i=0; i<incorrectAnswersApi[indexQuestion]; i++) {
+    for(let i=0; i<incorrectAnswersApi[indexQuestion].length; i++) {
+        console.log(incorrectAnswersApi[indexQuestion][i]);
         if(userAnswer === incorrectAnswersApi[indexQuestion][i]) {
+            console.log('enter if incorrect')
             userAnswer = incorrectAnswersApi[indexQuestion];
-            userAnswer.classList.remove('quizhub__background__gray');
-            userAnswer.classList.add('quizhub__background__red');
+            userAnswerElement.classList.remove('quizhub__background__gray');
+            userAnswerElement.classList.add('quizhub__background__red');
             correctAnswersApi[indexQuestion].classList.add('quizhub__background__green');
-            console.log('entrou na errada')
+            
         }
     }
     
