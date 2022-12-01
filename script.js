@@ -48,7 +48,7 @@ const quizhub = document.getElementById('quizhub');
 const dropdown = document.getElementById('categories');
 const card = document.getElementById('quizhubCard');
 
-//creating questions
+//initializing questions
 var index = 0;
 const start = document.getElementById('startQuiz');
 start.addEventListener('click', (event) => {
@@ -67,42 +67,57 @@ start.addEventListener('click', (event) => {
     start.classList.add('quizhub__display__none');
 })
  
-//getting questions and answers id
+//getting question and answers id from html
 var question = document.querySelector('#questionsCard');
-var answerA = document.querySelector('#answer0');
-var answerB = document.querySelector('#answer1');
-var answerC = document.querySelector('#answer2');
-var answerD = document.querySelector('#answer3');
+var answerA = document.querySelector('#answer1');
+var answerB = document.querySelector('#answer2');
+var answerC = document.querySelector('#answer3');
+var answerD = document.querySelector('#answer4');
 
-//getting questions and answers
+//storing questions and answers
 var questionsApi = [];
 var correctAnswersApi = [];
 var incorrectAnswersApi = []; 
+var incorrect = [];
+var answer = [];
 
+//creating questions
 const save = (result) => { 
     for(let i=0; i<result.results.length; i++) {
         questionsApi.push(result.results[i].question);
         correctAnswersApi.push(result.results[i].correct_answer);
         incorrectAnswersApi.push(result.results[i].incorrect_answers);
-    }  
-    var allAnswers = correctAnswersApi.map(function() {
-        return [correctAnswersApi[index], incorrectAnswersApi[index]];
-    });
-    console.log('array of all answers ' + allAnswers[index]);
-    const shuffledAnswers = allAnswers[index].sort(()=>Math.random()-0.5);
-    console.log('shuffled ' + shuffledAnswers);  
+    };
+
+    //creating array with incorrect answers
+    incorrect = incorrectAnswersApi[index].slice();
+    console.log('incorrect answers ');
+    console.log(incorrect);
+    console.log('correct answer ' + correctAnswersApi[index]);
+
+    //creating array with all answers
+    var answer = correctAnswersApi[index].concat(incorrect);
+    /*var allAnswers = questionsApi.map(function() {        
+        return [correctAnswersApi[index], incorrect[index]];
+    });*/
+    console.log('all answers: ');
+    console.log(answer);
+    
+    const sortedAnswers = answer => answer.sort(()=>Math.random()-0.5);
+    console.log('shuffled ');  
+    console.log(sortedAnswers);
 };
-
-
 
 //printing first question and answers
 const printQuestion = (index) => {
     question.innerHTML = questionsApi[index];
-    answerA.innerHTML = correctAnswersApi[index];
+    //answerA.innerHTML = correctAnswersApi[index];
     let cont = 1;
-    for(let i=0; i<incorrectAnswersApi[index].length; i++) {
-        var answer = document.querySelector('#answer'+cont);
-        answer.innerHTML = incorrectAnswersApi[index][i];
+    console.log('allanswers' + allAnswers)
+    for(let i=0; i<allAnswers[index].length; i++) {
+            answer = document.querySelector('#answer'+cont);
+        console.log('resposta ' + i + ' da pergunta ' + index + ': ' + shuffledAnswers[index][i])
+        answer.innerHTML = shuffledAnswers[index][i];
         cont++;
     }   
 }
@@ -153,7 +168,10 @@ buttonOk.addEventListener('click', (event) => {
 //printing next questions and answers
 const buttonNext = document.querySelector('#btnNext');
 buttonNext.addEventListener('click', (event) => {
-    printQuestion(index);    
+    printQuestion(index);
+        allAnswers = correctAnswersApi.map(function() {
+        return [correctAnswersApi[index], incorrectAnswersApi[index]];
+    });
     index++;
     document.querySelectorAll('div').forEach(function (elem) {
         elem.classList.remove('quizhub__background__red', 'quizhub__background__green', 'quizhub__border');
@@ -167,5 +185,5 @@ buttonNext.addEventListener('click', (event) => {
     buttonNext.classList.remove('quizhub__display__block');
     buttonNext.classList.add('quizhub__display__none');
     buttonOk.classList.remove('quizhub__display__none');
-    buttonOk.classList.add('quizhub__display__block');
+    buttonOk.classList.add('quizhub__display__block');    
 });
