@@ -5,7 +5,7 @@ const selectCategory = document.getElementById('categories');
 function displayDropDown() {
     setTimeout(function() {
         selectCategory.style.opacity='1';
-    }, 4000);
+    }, 1000);
 }
 displayDropDown();
 
@@ -104,17 +104,7 @@ const save = (result) => {
         incorrectAnswersApi.push(result.results[i].incorrect_answers);
     };
 
-    //creating array with incorrect answers
-    incorrect = incorrectAnswersApi[index].slice();
-    console.log('incorrect answers ');
-    console.log(incorrect);
-    console.log('correct answer ');
-    console.log(correctAnswersApi[index]);
-
-    //creating array with all answers
-    answer = correctAnswersApi[index].concat(incorrect);
-    console.log('all answers: ');
-    console.log(answer);
+    
 
     /*const sortedAnswers = answer => answer.sort(()=>Math.random()-0.5);
     console.log('shuffled ');  
@@ -124,17 +114,15 @@ const save = (result) => {
 //printing first question and answers
 const printQuestion = (index) => {
     question.innerHTML = questionsApi[index];
-    //answerA.innerHTML = correctAnswersApi[index];
-    let cont = 1;
-    let answersOption = document.querySelectorAll('#answer'+cont);
+    //creating array with incorrect answers
+    incorrect = incorrectAnswersApi[index].slice();
+    //creating array with all answers
+    correctAnswerConcat = [correctAnswersApi[index]];
+    answer = correctAnswerConcat.concat(incorrect);
+    let answersOptions = [answerA, answerB, answerC, answerD];
     for(let i=0; i<answer.length; i++) {
-        answersOption.forEach(option => {
-            option.innerHTML = answer;
-            cont++;
-        });
-        console.log('answersOption');
-        console.log(answersOption);
-    }   
+        answersOptions[i].innerHTML = answer[i];
+    }
 }
 
  //storing user answer
@@ -183,10 +171,7 @@ buttonOk.addEventListener('click', (event) => {
 //printing next questions and answers
 const buttonNext = document.querySelector('#btnNext');
 buttonNext.addEventListener('click', (event) => {
-    printQuestion(index);
-        allAnswers = correctAnswersApi.map(function() {
-        return [correctAnswersApi[index], incorrectAnswersApi[index]];
-    });
+    printQuestion(index);        
     index++;
     document.querySelectorAll('div').forEach(function (elem) {
         elem.classList.remove('quizhub__background__red', 'quizhub__background__green', 'quizhub__border');
