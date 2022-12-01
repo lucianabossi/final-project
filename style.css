@@ -8,6 +8,12 @@ body {
     background-color: #4EADFF;
 }
 
+.quizhub__logo {
+    position: absolute;
+    right: 1.5rem;
+    top: 1.5rem;
+}
+
 .quizhub__cursor__pointer {
     cursor: pointer;
 }
@@ -48,9 +54,69 @@ body {
     color: #FADF6A;
 }
 
+h1 {
+    animation: myAnim 3s linear 0s 1 normal forwards;
+}
+
+@keyframes myAnim {
+	0% {
+		transform: scale3d(1, 1, 1);
+	}
+
+	30% {
+		transform: scale3d(1.25, 0.75, 1);
+	}
+
+	40% {
+		transform: scale3d(0.75, 1.25, 1);
+	}
+
+	50% {
+		transform: scale3d(1.15, 0.85, 1);
+	}
+
+	65% {
+		transform: scale3d(0.95, 1.05, 1);
+	}
+
+	75% {
+		transform: scale3d(1.05, 0.95, 1);
+	}
+
+	100% {
+		transform: scale3d(1, 1, 1);
+	}
+}
+
 .quizhub__dropdown {
     margin: 0 auto;
+    height: 30px;
+    background-color: #F9F9F9;
+    border: none;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px; 
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.1rem;
 }
+
+select {
+    animation: myAnimDropdown 4s ease 4s 1 normal forwards;
+}
+
+@keyframes myAnimDropdown {
+	0% {
+		opacity: 0;
+		transform: rotateX(70deg);
+		transform-origin: top;
+	}
+
+	100% {
+		opacity: 1;
+		transform: rotateX(0deg);
+		transform-origin: top;
+	}
+}
+
 
 .quizhub__start__btn {
     background-color: transparent;
@@ -66,7 +132,7 @@ body {
     width: 65vw;
     height: fit-content;
     background-color: #EBEBED;
-    margin: 5vh auto;
+    margin: 12vh auto;
     padding: 10px;
     border-radius: 20px;
 }

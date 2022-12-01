@@ -29,6 +29,7 @@ var userCategory;
 selectCategory.addEventListener('change', (event) => { 
     userCategory = selectCategory.value;
     start.classList.remove('quizhub__display__none');
+    start.classList.add('quizhub__display__block');
 })
 
 //getting categories from API
@@ -43,10 +44,11 @@ async function getQuestions() {
     }            
 }   
 
-//getting home ids
+//getting home elements
 const quizhub = document.getElementById('quizhub');
 const dropdown = document.getElementById('categories');
 const card = document.getElementById('quizhubCard');
+const logo = document.getElementById('logo');
 
 //initializing questions
 var index = 0;
@@ -59,12 +61,17 @@ start.addEventListener('click', (event) => {
             printQuestion(index);
             index++;
         });
-    }  
+    } 
+    quizhub.classList.remove('quizhub__display__block'); 
     quizhub.classList.add('quizhub__display__none');
+    dropdown.classList.remove('quizhub__display__block');
     dropdown.classList.add('quizhub__display__none');
     card.classList.remove('quizhub__display__none');
     card.classList.add('quizhub__display__block');
     start.classList.add('quizhub__display__none');
+    start.classList.remove('quizhub__display__block');
+    logo.classList.remove('quizhub__display__none');
+    logo.classList.add('quizhub__logo');
 })
  
 //getting question and answers id from html
@@ -93,19 +100,17 @@ const save = (result) => {
     incorrect = incorrectAnswersApi[index].slice();
     console.log('incorrect answers ');
     console.log(incorrect);
-    console.log('correct answer ' + correctAnswersApi[index]);
+    console.log('correct answer ');
+    console.log(correctAnswersApi[index]);
 
     //creating array with all answers
-    var answer = correctAnswersApi[index].concat(incorrect);
-    /*var allAnswers = questionsApi.map(function() {        
-        return [correctAnswersApi[index], incorrect[index]];
-    });*/
+    answer = correctAnswersApi[index].concat(incorrect);
     console.log('all answers: ');
     console.log(answer);
-    
-    const sortedAnswers = answer => answer.sort(()=>Math.random()-0.5);
+
+    /*const sortedAnswers = answer => answer.sort(()=>Math.random()-0.5);
     console.log('shuffled ');  
-    console.log(sortedAnswers);
+    console.log(sortedAnswers);*/
 };
 
 //printing first question and answers
@@ -113,12 +118,14 @@ const printQuestion = (index) => {
     question.innerHTML = questionsApi[index];
     //answerA.innerHTML = correctAnswersApi[index];
     let cont = 1;
-    console.log('allanswers' + allAnswers)
-    for(let i=0; i<allAnswers[index].length; i++) {
-            answer = document.querySelector('#answer'+cont);
-        console.log('resposta ' + i + ' da pergunta ' + index + ': ' + shuffledAnswers[index][i])
-        answer.innerHTML = shuffledAnswers[index][i];
-        cont++;
+    let answersOption = document.querySelectorAll('#answer'+cont);
+    for(let i=0; i<answer.length; i++) {
+        answersOption.forEach(option => {
+            option.innerHTML = answer;
+            cont++;
+        });
+        console.log('answersOption');
+        console.log(answersOption);
     }   
 }
 
