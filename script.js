@@ -60,6 +60,8 @@ const logo = document.getElementById('logo');
 
 //initializing questions
 var indexQuestion = 0;
+var correctAnswerElement;
+var correctAnswerElementId;
 const start = document.getElementById('startQuiz');
 start.addEventListener('click', (event) => {
     if(userCategory) {
@@ -83,10 +85,10 @@ start.addEventListener('click', (event) => {
  
 //getting question and answers id from html
 var question = document.querySelector('#questionsCard');
-var answerA = document.querySelector('#answer1');
-var answerB = document.querySelector('#answer2');
-var answerC = document.querySelector('#answer3');
-var answerD = document.querySelector('#answer4');
+var answerA = document.querySelector('#answer0');
+var answerB = document.querySelector('#answer1');
+var answerC = document.querySelector('#answer2');
+var answerD = document.querySelector('#answer3');
 
 //storing questions and answers
 var questionsApi = [];
@@ -103,8 +105,6 @@ const save = (result) => {
         incorrectAnswersApi.push(result.results[i].incorrect_answers);
     };
 
-    
-
     /*const sortedAnswers = answer => answer.sort(()=>Math.random()-0.5);
     console.log('shuffled ');  
     console.log(sortedAnswers);*/
@@ -112,16 +112,21 @@ const save = (result) => {
 
 //printing first question and answers
 const printQuestion = (indexQuestion) => {
-    question.innerHTML = questionsApi[indexQuestion];
+    question.innerHTML = questionsApi[indexQuestion]; 
     //creating array with incorrect answers
     incorrect = incorrectAnswersApi[indexQuestion].slice();
     //creating array with all answers
     correctAnswerConcat = [correctAnswersApi[indexQuestion]];
     answer = correctAnswerConcat.concat(incorrect);
+    const find = (e) => e === correctAnswersApi[indexQuestion];
+    let foundAnswerIndex = answer.findIndex(find);
+    correctAnswerElementId = 'answer'+foundAnswerIndex;
+    correctAnswerElement = document.getElementById(correctAnswerElementId);
+
     let answersOptions = [answerA, answerB, answerC, answerD];
     for(let i=0; i<answer.length; i++) {
         answersOptions[i].innerHTML = answer[i];
-    }
+    }   
 }
 
  //storing user answer
@@ -142,30 +147,19 @@ const printQuestion = (indexQuestion) => {
 const buttonOk = document.querySelector('#btnOk');
 buttonOk.addEventListener('click', (event) => {
     let userAnswerElement = document.getElementById(userAnswerId);
-    console.log('user answer' + userAnswer);
-    console.log('correct '+ correctAnswersApi[indexQuestion]);
     if(userAnswer === correctAnswersApi[indexQuestion]) {
         userAnswer = correctAnswersApi[indexQuestion];
-        console.log('--------')
-        console.log(userAnswer);
-        
         userAnswerElement.classList.remove('quizhub__background__gray');
         userAnswerElement.classList.add('quizhub__background__green');
-        console.log('entered if correct')
     };
 
-    console.log('user answer' + userAnswer);
-    console.log(userAnswer);
-    console.log('incorrect ' + incorrectAnswersApi[indexQuestion]);
     for(let i=0; i<incorrectAnswersApi[indexQuestion].length; i++) {
-        console.log(incorrectAnswersApi[indexQuestion][i]);
         if(userAnswer === incorrectAnswersApi[indexQuestion][i]) {
-            console.log('enter if incorrect')
             userAnswer = incorrectAnswersApi[indexQuestion];
             userAnswerElement.classList.remove('quizhub__background__gray');
-            userAnswerElement.classList.add('quizhub__background__red');
-            correctAnswersApi[indexQuestion].classList.add('quizhub__background__green');
-            
+            userAnswerElement.classList.add('quizhub__background__red');   
+            correctAnswerElement.classList.remove('quizhub__background__gray');
+            correctAnswerElement.classList.add('quizhub__background__green');         
         }
     }
     
