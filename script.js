@@ -118,10 +118,22 @@ const printQuestion = (indexQuestion) => {
     //creating array with all answers
     correctAnswerConcat = [correctAnswersApi[indexQuestion]];
     answer = correctAnswerConcat.concat(incorrect);
+    console.log('shuffled ');
+    console.log(answer.sort());
     const find = (e) => e === correctAnswersApi[indexQuestion];
     let foundAnswerIndex = answer.findIndex(find);
     correctAnswerElementId = 'answer'+foundAnswerIndex;
     correctAnswerElement = document.getElementById(correctAnswerElementId);
+    console.log(correctAnswerElement);
+
+    //const sortedNumbers = answer.sort((x,y) => {return x-y});
+
+    console.log('array de respostas certas e erradas');
+    console.log(answer);
+    console.log('tipo de elemento do array');
+    console.log(typeof answer[indexQuestion]);
+    //const sortedAnswers = answer.sort();
+     
 
     let answersOptions = [answerA, answerB, answerC, answerD];
     for(let i=0; i<answer.length; i++) {
