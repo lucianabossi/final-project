@@ -57,6 +57,7 @@ const quizhub = document.getElementById('quizhub');
 const dropdown = document.getElementById('categories');
 const card = document.getElementById('quizhubCard');
 const logo = document.getElementById('logo');
+const result = document.getElementById('resultCard');
 
 //initializing questions
 var indexQuestion = 0;
@@ -156,6 +157,7 @@ const printQuestion = (indexQuestion) => {
  });
  
  //checking answers
+ var userScore = 0;
 const buttonOk = document.querySelector('#btnOk');
 buttonOk.addEventListener('click', (event) => {
     let userAnswerElement = document.getElementById(userAnswerId);
@@ -163,6 +165,7 @@ buttonOk.addEventListener('click', (event) => {
         userAnswer = correctAnswersApi[indexQuestion];
         userAnswerElement.classList.remove('quizhub__background__gray');
         userAnswerElement.classList.add('quizhub__background__green');
+        userScore = userScore + 10;
     };
 
     for(let i=0; i<incorrectAnswersApi[indexQuestion].length; i++) {
@@ -179,6 +182,15 @@ buttonOk.addEventListener('click', (event) => {
     buttonNext.classList.add('quizhub__display__block');
     buttonOk.classList.remove('quizhub__display__block');
     buttonOk.classList.add('quizhub__display__none');
+
+    if(indexQuestion === 9) {
+        buttonNext.classList.remove('quizhub__display__block');
+        buttonNext.classList.add('quizhub__display__none');
+        buttonOk.classList.add('quizhub__display__none');
+        buttonOk.classList.remove('quizhub__display__block');
+        buttonFinish.classList.remove('quizhub__display__none');
+        buttonFinish.classList.add('quizhub__display__block');
+    }
 });
 
 //printing next questions and answers
@@ -194,9 +206,35 @@ buttonNext.addEventListener('click', (event) => {
     });   
     let counter = document.querySelector('#questionNumber');
     let number = parseInt(counter.innerText)+1;
+    console.log(number);
     counter.innerText = number+'/10';    
     buttonNext.classList.remove('quizhub__display__block');
     buttonNext.classList.add('quizhub__display__none');
     buttonOk.classList.remove('quizhub__display__none');
-    buttonOk.classList.add('quizhub__display__block');    
+    buttonOk.classList.add('quizhub__display__block');     
 });
+
+//finishing game
+const score1 = document.getElementById('great');
+const score2 = document.getElementById('good');
+const score3 = document.getElementById('ok');
+const score4 = document.getElementById('fail');
+const scoreGame = document.getElementById('score');
+const buttonFinish = document.querySelector('#btnFinish');
+buttonFinish.addEventListener('click', (event) => {
+    card.classList.remove('quizhub__display__block');
+    card.classList.add('quizhub__display__none');
+    result.classList.remove('quizhub__display__none');
+    result.classList.add('quizhub__display__block');
+    scoreGame.innerText = 'Score game: '+userScore+' points';
+    if(userScore >= 70) {
+        score1.classList.add('quizhub__display__block');
+    } else if (userScore >=50) {
+        score2.classList.add('quizhub__display__none');
+    } else if (userScore >= 30) {
+        score3.classList.add('quizhub__display__block');
+    } else if (userScore <= 20) {
+        score4.classList.add('quizhub__display__block');
+    }
+});
+
