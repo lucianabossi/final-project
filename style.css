@@ -175,7 +175,7 @@ select {
     width: 50vw;
     height: 40vh;
     background-color: transparent;
-    margin: 20vh auto 0;
+    margin: 10vh auto 0;
     font-family: 'Press Start 2P', cursive;
     text-align: center;
     padding: 20px;
@@ -186,6 +186,14 @@ select {
     width: 40vw;
     height: 4vh;
     margin: 20vh auto 0;
+    background-color: transparent;    
+}
+
+#thanksImg, #fail, #ok, #good, #great {
     background-color: transparent;
+    margin: 0 auto;
+    width: 30vw;
+    height: 50vh;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
     border-radius: 20px;
 }

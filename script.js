@@ -115,23 +115,11 @@ const printQuestion = (indexQuestion) => {
     //creating array with all answers
     correctAnswerConcat = [correctAnswersApi[indexQuestion]];
     answer = correctAnswerConcat.concat(incorrect);
-    console.log('shuffled ');
-    console.log(answer.sort());
+    answer.sort();
     const find = (e) => e === correctAnswersApi[indexQuestion];
     let foundAnswerIndex = answer.findIndex(find);
     correctAnswerElementId = 'answer'+foundAnswerIndex;
     correctAnswerElement = document.getElementById(correctAnswerElementId);
-    console.log(correctAnswerElement);
-
-    //const sortedNumbers = answer.sort((x,y) => {return x-y});
-
-    console.log('array de respostas certas e erradas');
-    console.log(answer);
-    console.log('tipo de elemento do array');
-    console.log(typeof answer[indexQuestion]);
-    //const sortedAnswers = answer.sort();
-     
-
     let answersOptions = [answerA, answerB, answerC, answerD];
     for(let i=0; i<answer.length; i++) {
         answersOptions[i].innerHTML = answer[i];
@@ -157,23 +145,19 @@ const printQuestion = (indexQuestion) => {
 const buttonOk = document.querySelector('#btnOk');
 buttonOk.addEventListener('click', (event) => {
     let userAnswerElement = document.getElementById(userAnswerId);
-    if(userAnswer === correctAnswersApi[indexQuestion]) {
+    if(userAnswerId === correctAnswerElementId) {
         userAnswer = correctAnswersApi[indexQuestion];
         userAnswerElement.classList.remove('quizhub__background__gray');
         userAnswerElement.classList.add('quizhub__background__green');
         userScore = userScore + 10;
-    };
-
-    for(let i=0; i<incorrectAnswersApi[indexQuestion].length; i++) {
-        if(userAnswer === incorrectAnswersApi[indexQuestion][i]) {
-            userAnswer = incorrectAnswersApi[indexQuestion];
+    } else {
+        userAnswer = incorrectAnswersApi[indexQuestion];
             userAnswerElement.classList.remove('quizhub__background__gray');
             userAnswerElement.classList.add('quizhub__background__red');   
             correctAnswerElement.classList.remove('quizhub__background__gray');
-            correctAnswerElement.classList.add('quizhub__background__green');         
-        }
+            correctAnswerElement.classList.add('quizhub__background__green'); 
     }
-    
+
     buttonNext.classList.remove('quizhub__display__none');
     buttonNext.classList.add('quizhub__display__block');
     buttonOk.classList.remove('quizhub__display__block');
@@ -202,7 +186,6 @@ buttonNext.addEventListener('click', (event) => {
     });   
     let counter = document.querySelector('#questionNumber');
     let number = parseInt(counter.innerText)+1;
-    console.log(number);
     counter.innerText = number+'/10';    
     buttonNext.classList.remove('quizhub__display__block');
     buttonNext.classList.add('quizhub__display__none');
@@ -226,7 +209,7 @@ buttonFinish.addEventListener('click', (event) => {
     if(userScore >= 70) {
         score1.classList.add('quizhub__display__block');
     } else if (userScore >=50) {
-        score2.classList.add('quizhub__display__none');
+        score2.classList.add('quizhub__display__block');
     } else if (userScore >= 30) {
         score3.classList.add('quizhub__display__block');
     } else if (userScore <= 20) {
