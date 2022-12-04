@@ -238,3 +238,18 @@ buttonFinish.addEventListener('click', (event) => {
     }
 });
 
+//play again
+const playAgain = document.getElementById('btnPlayAgain');
+playAgain.addEventListener('click', (event) => {
+    location.reload();
+});
+
+//exit game
+const endGame = document.getElementById('endGame');
+const exitGame = document.getElementById('btnExitGame');
+exitGame.addEventListener('click', (event) => {
+    result.classList.remove('quizhub__display__block');
+    result.classList.add('quizhub__display__none');
+    endGame.classList.remove('quizhub__display__none');
+    endGame.classList.add('quizhub__display__block');
+});
