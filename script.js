@@ -105,10 +105,6 @@ const save = (result) => {
         correctAnswersApi.push(result.results[i].correct_answer);
         incorrectAnswersApi.push(result.results[i].incorrect_answers);
     };
-
-    /*const sortedAnswers = answer => answer.sort(()=>Math.random()-0.5);
-    console.log('shuffled ');  
-    console.log(sortedAnswers);*/
 };
 
 //printing first question and answers
