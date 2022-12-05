@@ -193,7 +193,11 @@ select {
     background-color: transparent;
     margin: 0 auto;
     width: 30vw;
-    height: 50vh;
+    height: 40vh;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
     border-radius: 20px;
+}
+
+#btnPlayAgain {
+    margin-top: 25vh;
 }
