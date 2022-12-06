@@ -207,10 +207,10 @@ buttonNext.addEventListener('click', (event) => {
 //score2 -> >= 50
 //score3 -> >= 30
 //score4 -> <30
-const score1 = document.getElementById('great');
-const score2 = document.getElementById('good');
-const score3 = document.getElementById('ok');
-const score4 = document.getElementById('fail');
+const score1 = document.getElementById('score1');
+const score2 = document.getElementById('score2');
+const score3 = document.getElementById('score3');
+const score4 = document.getElementById('score4');
 const scoreGame = document.getElementById('score');
 const buttonFinish = document.querySelector('#btnFinish');
 buttonFinish.addEventListener('click', (event) => {
