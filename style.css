@@ -189,15 +189,15 @@ select {
     background-color: transparent;    
 }
 
-#endGameImg, #score4, #score3, #score2, #score1 {
+/*#endGameImg, #score4, #score3, #score2, #score1 {
     background-color: transparent;
     margin: 0 auto;
     width: 30vw;
     height: 40vh;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
     border-radius: 20px;
-}
+}*/
 
-#btnPlayAgain {
+/*#btnPlayAgain {
     margin-top: 23vh;
-}
+}*/
