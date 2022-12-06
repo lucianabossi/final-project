@@ -132,8 +132,11 @@ const printQuestion = (indexQuestion) => {
  //storing user answer
  var userAnswer;
  var userAnswerId;
+ const buttonOk = document.querySelector('#btnOk');
  const answers = document.querySelectorAll('.quizhub__answers__card').forEach(item => {
      item.addEventListener('click', event => {
+        //enabling button ok
+        buttonOk.removeAttribute('disabled');
         document.querySelectorAll('.quizhub__answers__card').forEach(element => {
             element.classList.remove('quizhub__border');
         });
@@ -146,7 +149,7 @@ const printQuestion = (indexQuestion) => {
 //initializing user score
 var userScore = 0;
 //checking answers
-const buttonOk = document.querySelector('#btnOk');
+
 buttonOk.addEventListener('click', (event) => {
     let userAnswerElement = document.getElementById(userAnswerId);
     //correct answer
@@ -199,7 +202,10 @@ buttonNext.addEventListener('click', (event) => {
     buttonNext.classList.remove('quizhub__display__block');
     buttonNext.classList.add('quizhub__display__none');
     buttonOk.classList.remove('quizhub__display__none');
-    buttonOk.classList.add('quizhub__display__block');     
+    buttonOk.classList.add('quizhub__display__block');  
+    
+    //disabling button ok
+    buttonOk.setAttribute('disabled', '');
 });
 
 //finishing game
