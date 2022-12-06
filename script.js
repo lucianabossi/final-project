@@ -115,11 +115,14 @@ const printQuestion = (indexQuestion) => {
     //creating array with all answers
     correctAnswerConcat = [correctAnswersApi[indexQuestion]];
     answer = correctAnswerConcat.concat(incorrect);
+    //shuffle answers
     answer.sort();
+    //getting ID and element from correct answer
     const find = (e) => e === correctAnswersApi[indexQuestion];
     let foundAnswerIndex = answer.findIndex(find);
     correctAnswerElementId = 'answer'+foundAnswerIndex;
     correctAnswerElement = document.getElementById(correctAnswerElementId);
+    //saving divs answers
     let answersOptions = [answerA, answerB, answerC, answerD];
     for(let i=0; i<answer.length; i++) {
         answersOptions[i].innerHTML = answer[i];
@@ -140,17 +143,20 @@ const printQuestion = (indexQuestion) => {
      })
  });
  
- //checking answers
- var userScore = 0;
+//initializing user score
+var userScore = 0;
+//checking answers
 const buttonOk = document.querySelector('#btnOk');
 buttonOk.addEventListener('click', (event) => {
     let userAnswerElement = document.getElementById(userAnswerId);
+    //correct answer
     if(userAnswerId === correctAnswerElementId) {
         userAnswer = correctAnswersApi[indexQuestion];
         userAnswerElement.classList.remove('quizhub__background__gray');
         userAnswerElement.classList.add('quizhub__background__green');
         userScore = userScore + 10;
     } else {
+        //incorrect answer
         userAnswer = incorrectAnswersApi[indexQuestion];
             userAnswerElement.classList.remove('quizhub__background__gray');
             userAnswerElement.classList.add('quizhub__background__red');   
@@ -158,11 +164,13 @@ buttonOk.addEventListener('click', (event) => {
             correctAnswerElement.classList.add('quizhub__background__green'); 
     }
 
+    //next question button
     buttonNext.classList.remove('quizhub__display__none');
     buttonNext.classList.add('quizhub__display__block');
     buttonOk.classList.remove('quizhub__display__block');
     buttonOk.classList.add('quizhub__display__none');
 
+    //condition to finish the game after the last question
     if(indexQuestion === 9) {
         buttonNext.classList.remove('quizhub__display__block');
         buttonNext.classList.add('quizhub__display__none');
@@ -183,7 +191,8 @@ buttonNext.addEventListener('click', (event) => {
     });
     document.querySelectorAll('div.quizhub__answers__card').forEach(function (elem) {
         elem.classList.add('quizhub__background__gray');
-    });   
+    });
+    //counting questions   
     let counter = document.querySelector('#questionNumber');
     let number = parseInt(counter.innerText)+1;
     counter.innerText = number+'/10';    
@@ -194,6 +203,10 @@ buttonNext.addEventListener('click', (event) => {
 });
 
 //finishing game
+//score1 -> >= 70
+//score2 -> >= 50
+//score3 -> >= 30
+//score4 -> <30
 const score1 = document.getElementById('great');
 const score2 = document.getElementById('good');
 const score3 = document.getElementById('ok');
@@ -212,7 +225,7 @@ buttonFinish.addEventListener('click', (event) => {
         score2.classList.add('quizhub__display__block');
     } else if (userScore >= 30) {
         score3.classList.add('quizhub__display__block');
-    } else if (userScore <= 20) {
+    } else if (userScore < 30) {
         score4.classList.add('quizhub__display__block');
     }
 });
