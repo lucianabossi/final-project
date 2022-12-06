@@ -139,8 +139,10 @@ const printQuestion = (indexQuestion) => {
         buttonOk.removeAttribute('disabled');
         document.querySelectorAll('.quizhub__answers__card').forEach(element => {
             element.classList.remove('quizhub__border');
+            element.classList.remove('quizhub__background__blue');
         });
-        item.classList.add('quizhub__border'); 
+        item.classList.add('quizhub__border');
+        item.classList.add('quizhub__background__blue'); 
         userAnswerId = item.id;  
         userAnswer = item.innerText;      
      })
@@ -156,12 +158,14 @@ buttonOk.addEventListener('click', (event) => {
     if(userAnswerId === correctAnswerElementId) {
         userAnswer = correctAnswersApi[indexQuestion];
         userAnswerElement.classList.remove('quizhub__background__gray');
+        userAnswerElement.classList.remove('quizhub__background__blue');
         userAnswerElement.classList.add('quizhub__background__green');
         userScore = userScore + 10;
     } else {
         //incorrect answer
         userAnswer = incorrectAnswersApi[indexQuestion];
             userAnswerElement.classList.remove('quizhub__background__gray');
+            userAnswerElement.classList.remove('quizhub__background__blue');
             userAnswerElement.classList.add('quizhub__background__red');   
             correctAnswerElement.classList.remove('quizhub__background__gray');
             correctAnswerElement.classList.add('quizhub__background__green'); 
@@ -224,7 +228,7 @@ buttonFinish.addEventListener('click', (event) => {
     card.classList.add('quizhub__display__none');
     result.classList.remove('quizhub__display__none');
     result.classList.add('quizhub__display__block');
-    scoreGame.innerText = 'Score game: '+userScore+' points';
+    scoreGame.innerText = 'Score game: '+userScore+' points out of 100';
     if(userScore >= 70) {
         score1.classList.add('quizhub__display__block');
     } else if (userScore >=50) {

@@ -42,6 +42,10 @@ body {
     background-color: #F9F9F9;
 }
 
+.quizhub__background__blue {
+    background-color: #7BD3F3;
+}
+
 .quizhub__home {
     width: 45vw;
     font-family: 'Press Start 2P', cursive; 
