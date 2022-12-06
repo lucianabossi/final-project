@@ -189,7 +189,7 @@ select {
     background-color: transparent;    
 }
 
-#thanksImg, #score4, #score3, #score2, #score1 {
+#endGameImg, #score4, #score3, #score2, #score1 {
     background-color: transparent;
     margin: 0 auto;
     width: 30vw;
