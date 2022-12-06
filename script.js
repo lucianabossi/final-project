@@ -240,7 +240,7 @@ buttonFinish.addEventListener('click', (event) => {
     card.classList.add('quizhub__display__none');
     result.classList.remove('quizhub__display__none');
     result.classList.add('quizhub__display__block');
-    scoreGame.innerText = 'Score game: '+userScore+' points out of 100';
+    scoreGame.innerText = 'Score game: '+userScore+' out of 100 points';
     if(userScore >= 70) {
         score1.classList.add('quizhub__display__block');
     } else if (userScore >=50) {
