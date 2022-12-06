@@ -157,7 +157,7 @@ select {
     padding: 10px;
 }
 
-#btnOk, #btnNext, #btnFinish {
+#btnOk, #btnBack, #btnNext, #btnFinish {
     width: 100px;
     height: 40px;
     background-color: #F9F9F9;

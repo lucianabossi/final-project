@@ -152,6 +152,11 @@ const printQuestion = (indexQuestion) => {
 var userScore = 0;
 //checking answers
 
+//getting button back id
+const buttonBack = document.getElementById('btnBack');
+
+
+//button ok
 buttonOk.addEventListener('click', (event) => {
     let userAnswerElement = document.getElementById(userAnswerId);
     //correct answer
@@ -175,7 +180,7 @@ buttonOk.addEventListener('click', (event) => {
     buttonNext.classList.remove('quizhub__display__none');
     buttonNext.classList.add('quizhub__display__block');
     buttonOk.classList.remove('quizhub__display__block');
-    buttonOk.classList.add('quizhub__display__none');
+    buttonOk.classList.add('quizhub__display__none');    
 
     //condition to finish the game after the last question
     if(indexQuestion === 9) {
@@ -186,6 +191,7 @@ buttonOk.addEventListener('click', (event) => {
         buttonFinish.classList.remove('quizhub__display__none');
         buttonFinish.classList.add('quizhub__display__block');
     }
+    console.log(indexQuestion)
 });
 
 //printing next questions and answers
@@ -210,6 +216,12 @@ buttonNext.addEventListener('click', (event) => {
     
     //disabling button ok
     buttonOk.setAttribute('disabled', '');
+
+    //showing button back
+    if(indexQuestion >= 1) {
+        buttonBack.classList.remove('quizhub__display__none');
+        buttonBack.classList.add('quizhub__display__block');
+    }
 });
 
 //finishing game
