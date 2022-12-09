@@ -195,7 +195,7 @@ buttonNext.addEventListener('click', (event) => {
     indexQuestion++;
     printQuestion(indexQuestion);
     document.querySelectorAll('div').forEach(function (elem) {
-        elem.classList.remove('quizhub__background__red', 'quizhub__background__green', 'quizhub__border');
+        elem.classList.remove('quizhub__background__red', 'quizhub__background__green', 'quizhub__background__blue', 'quizhub__border');
     });
     document.querySelectorAll('div.quizhub__answers__card').forEach(function (elem) {
         elem.classList.add('quizhub__background__gray');
