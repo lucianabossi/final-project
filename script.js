@@ -108,7 +108,7 @@ const save = (result) => {
     };
 };
 
-//printing first question and answers
+//printing question and answers
 const printQuestion = (indexQuestion) => {
     question.innerHTML = questionsApi[indexQuestion]; 
     //creating array with incorrect answers
@@ -189,7 +189,6 @@ buttonOk.addEventListener('click', (event) => {
     }
 });
 
-//printing next questions and answers
 //getting next question button id
 const buttonNext = document.querySelector('#btnNext');
 buttonNext.addEventListener('click', (event) => {            
@@ -225,10 +224,10 @@ buttonNext.addEventListener('click', (event) => {
 });
 
 //finishing game
-//score1 -> >= 70 (7 or more correct answers)
-//score2 -> >= 50 (5 or more correct answers)
-//score3 -> >= 30 (3 or more correct answers)
-//score4 -> <30   (less than 3 correct answers)
+//score1 -> 7 or more correct answers
+//score2 -> 5 or more correct answers
+//score3 -> 3 or more correct answers
+//score4 -> less than 3 correct answers
 const score1 = document.getElementById('score1');
 const score2 = document.getElementById('score2');
 const score3 = document.getElementById('score3');
