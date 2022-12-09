@@ -4,30 +4,59 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>QUIZhub</title>
+    <link rel="shortcut icon" href="./favicon_io (16)/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <header>
+        <img src="logo.png" alt="logo" class="quizhub__display__none" id="logo">
+    </header>
     <div class="quizhub__home">
-        <div class="quizhub__title">
+        <div class="quizhub__title quizhub__display__block" id="quizhub">
             <h1>QUIZhub</h1>
         </div>
         <div>
-            <select name="category" id="categories" class="quizhub__dropdown">
+            <select name="category" id="categories" class="quizhub__dropdown quizhub__display__block">
                 <option value="">Select category...</option>
             </select>
         </div>
-            <button class="quizhub__start__btn" id="startQuiz">START</button>
+            <button class="quizhub__display__none" id="startQuiz">START</button>
     </div>
-    <div class="quizhub__cards">
+    <div class="quizhub__cards quizhub__display__none" id="quizhubCard">
         <div class="quizhub__questions__card" id="questionsCard"></div>
-        <div class="quizhub__answers__card" id="answerA"></div>
-        <div class="quizhub__answers__card" id="answerB"></div>
-        <div class="quizhub__answers__card" id="answerC"></div>
-        <div class="quizhub__answers__card" id="answerD"></div>
-        <button id="btnOk">OK</button>
-        <button id="btnNext">next</button>
-        <p>01/10</p>
+        <div class="quizhub__answers__card quizhub__background__gray quizhub__cursor__pointer" id="answer0"></div>
+        <div class="quizhub__answers__card quizhub__background__gray quizhub__cursor__pointer" id="answer1"></div>
+        <div class="quizhub__answers__card quizhub__background__gray quizhub__cursor__pointer" id="answer2"></div>
+        <div class="quizhub__answers__card quizhub__background__gray quizhub__cursor__pointer" id="answer3"></div>
+        
+        <div id="questionNumber">            
+            <div class="question-bar" style="width: 10%;"><p id="questionCounter">1/10</p></div>
+        </div>
+        <button id="btnOk" class="quizhub__cursor__pointer quizhub__display__block" disabled='disabled'>OK</button>
+        <button id="btnNext" class="quizhub__display__none quizhub__cursor__pointer">NEXT</button>
+        <button id="btnFinish" class="quizhub__display__none quizhub__cursor__pointer">FINISH</button>
+                
+    </div>
+    <div class="quizhub__score__card quizhub__display__none" id="resultCard">
+        <h2 id="score"></h2>
+        <div class="quizhub__display__none" id="score1">
+            <img src="great.gif" alt="">
+        </div>   
+        <div class="quizhub__display__none" id="score2">
+            <img src="good (2).gif" alt="">
+        </div>  
+        <div class="quizhub__display__none" id="score3">
+            <img src="ok (2).gif" alt=""> 
+        </div> 
+        <div class="quizhub__display__none" id="score4">
+            <img src="ops.gif" alt="">
+        </div> 
+        <button id="btnPlayAgain" class="quizhub__display__block">PLAY AGAIN</button>
+        <button id="btnExitGame" class="quizhub__display__block">EXIT GAME</button>        
+    </div>
+    <div class="quizhub__exit__game quizhub__display__none" id="endGame">
+        <img src="thanks.gif" alt="" id="endGameImg">
     </div>
 
     <script src="script.js"></script>

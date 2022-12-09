@@ -1,11 +1,53 @@
 @charset "UTF-8";
 
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto+Mono:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto+Mono:wght@300;400;500;600;700&family=VT323&display=swap');
 
 body {
     margin: 0;
     padding: 0;
     background-color: #4EADFF;
+}
+
+.quizhub__logo {
+    position: absolute;
+    right: 1.5rem;
+    top: 1.5rem;
+}
+
+.quizhub__cursor__pointer {
+    cursor: pointer;
+}
+
+.quizhub__display__none {
+    display: none;
+}
+
+.quizhub__display__block {
+    display: block;
+}
+
+.quizhub__display__flex {
+    display: flex;
+}
+
+.quizhub__background__green {
+    background-color: #00FF00;
+}
+
+.quizhub__background__red {
+    background-color: #F20101;
+}
+
+.quizhub__border {
+    border: 1px solid #000;
+}
+
+.quizhub__background__gray {    
+    background-color: #F9F9F9;
+}
+
+.quizhub__background__blue {
+    background-color: #7BD3F3;
 }
 
 .quizhub__home {
@@ -20,41 +62,179 @@ body {
     color: #FADF6A;
 }
 
-.quizhub__dropdown {
-    margin: 0 auto;
+h1 {
+    animation: myAnim 3s linear 0s 1 normal forwards;
 }
 
-.quizhub__start__btn {
+@keyframes myAnim {
+	0% {
+		transform: scale3d(1, 1, 1);
+	}
+
+	30% {
+		transform: scale3d(1.25, 0.75, 1);
+	}
+
+	40% {
+		transform: scale3d(0.75, 1.25, 1);
+	}
+
+	50% {
+		transform: scale3d(1.15, 0.85, 1);
+	}
+
+	65% {
+		transform: scale3d(0.95, 1.05, 1);
+	}
+
+	75% {
+		transform: scale3d(1.05, 0.95, 1);
+	}
+
+	100% {
+		transform: scale3d(1, 1, 1);
+	}
+}
+
+.quizhub__dropdown {
+    margin: 0 auto;
+    height: 30px;
+    background-color: #F9F9F9;
+    border: none;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px; 
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.1rem;
+}
+
+select {
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+}
+
+#startQuiz, #btnPlayAgain, #btnExitGame {
     background-color: transparent;
     border: none;
-    font-size: 2.2rem;
-    margin: 5vh auto;
+    margin: 5vh auto 2vh;
     font-family: 'Press Start 2P', cursive;
-    color: #f9f9f9;
+    color: #FADF6A;
     cursor: pointer;
 }
 
+#btnExitGame {
+    margin-top: 0;
+}
+
+#startQuiz {
+    font-size: 2.2rem;
+    color: #f9f9f9;
+}
+
 .quizhub__cards {
-    display: block;
-    width: 60vw;
-    height: 80vh;
-    background-color: pink;
-    margin: 10px auto;
-    padding: 20px;
+    width: 65vw;
+    height: fit-content;
+    background-color: #EBEBED;
+    margin: 12vh auto;
+    padding: 10px;
+    border-radius: 20px;
 }
 
 .quizhub__questions__card {
     display: block;
     width: 58vw;
-    height: 16vh;
-    background-color: lightgrey;
-    margin: 20px;
+    height: max-content;
+    background-color: #F9F9F9;
+    margin: 25px;
+    font-family: 'Roboto mono';
+    font-size: 1.7rem;
+    text-align: justify;
+    line-height: 1cm;
+    padding: 10px;
 }
 
 .quizhub__answers__card {
     display: block;
     width: 58vw;
-    height: 10vh;
-    background-color: lightgrey;
-    margin: 20px;
+    height: max-content;
+    margin: 25px;
+    font-family: 'Roboto mono';
+    font-size: 1.5rem;
+    text-align: justify;
+    line-height: 1cm;
+    text-indent: 0.1cm;
+    padding: 10px;
+}
+
+#btnOk, #btnBack, #btnNext, #btnFinish {
+    width: 100px;
+    height: 40px;
+    background-color: #F9F9F9;
+    font-family: 'Roboto mono';
+    font-size: 1.5rem;
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+    margin: 10px auto 0;
+}
+
+#questionCounter {
+    font-family: 'Roboto mono';
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+#questionNumber {
+    /*font-family: 'Roboto mono';
+    font-size: 1.2rem;
+    text-align: right;*/
+    width: 50vw;
+    height: 4vh;
+    border-radius: 10px;
+    margin: 0 auto;
+    background-color: rgba(255, 254, 254, 0.383);
+}
+
+.question-bar {
+    height: 100%;
+    border-radius: 10px;
+    background-color: #08b99ba4;    
+}
+
+#questionCounter {
+    font-family: 'Roboto mono';
+    font-size: 1.2rem;
+    text-align: center;
+    line-height: 1cm;
+    width: 10vw;
+    margin-left: 20vw;
+}
+
+.quizhub__score__card {
+    width: 50vw;
+    height: 40vh;
+    background-color: transparent;
+    margin: 10vh auto 0;
+    font-family: 'VT323', monospace;
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 20px;
+    color: #F9F9F9;
+}
+
+.quizhub__exit__game {
+    width: 40vw;
+    height: 4vh;
+    margin: 20vh auto 0;
+    background-color: transparent;    
+}
+
+#endGameImg, #score4, #score3, #score2, #score1 {    
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+}
+
+#endGameImg {
+    width: 35vw;
+    height: 50vh;
 }
