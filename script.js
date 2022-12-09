@@ -16,7 +16,8 @@ async function getCategory() {
         const data = response.json();
         return data;
     } catch (err) {
-        console.log(err)
+        console.log(err);
+        alert('Something went wrong...try again in a few seconds');
     }    
 }
 
@@ -84,7 +85,7 @@ start.addEventListener('click', (event) => {
     logo.classList.add('quizhub__logo');
 })
  
-//getting question and answers id from html
+//getting questions and answers id from html
 var question = document.querySelector('#questionsCard');
 var answerA = document.querySelector('#answer0');
 var answerB = document.querySelector('#answer1');
@@ -132,6 +133,7 @@ const printQuestion = (indexQuestion) => {
  //storing user answer
  var userAnswer;
  var userAnswerId;
+ //getting button ok id
  const buttonOk = document.querySelector('#btnOk');
  const answers = document.querySelectorAll('.quizhub__answers__card').forEach(item => {
      item.addEventListener('click', event => {
@@ -151,11 +153,6 @@ const printQuestion = (indexQuestion) => {
 //initializing user score
 var userScore = 0;
 //checking answers
-
-
-
-
-//button ok
 buttonOk.addEventListener('click', (event) => {
     let userAnswerElement = document.getElementById(userAnswerId);
     //correct answer
@@ -175,7 +172,7 @@ buttonOk.addEventListener('click', (event) => {
             correctAnswerElement.classList.add('quizhub__background__green'); 
     }
 
-    //next question button
+    //adding and removing buttons classes
     buttonNext.classList.remove('quizhub__display__none');
     buttonNext.classList.add('quizhub__display__block');
     buttonOk.classList.remove('quizhub__display__block');
@@ -193,6 +190,7 @@ buttonOk.addEventListener('click', (event) => {
 });
 
 //printing next questions and answers
+//getting next question button id
 const buttonNext = document.querySelector('#btnNext');
 buttonNext.addEventListener('click', (event) => {            
     indexQuestion++;
@@ -227,15 +225,17 @@ buttonNext.addEventListener('click', (event) => {
 });
 
 //finishing game
-//score1 -> >= 70
-//score2 -> >= 50
-//score3 -> >= 30
-//score4 -> <30
+//score1 -> >= 70 (7 or more correct answers)
+//score2 -> >= 50 (5 or more correct answers)
+//score3 -> >= 30 (3 or more correct answers)
+//score4 -> <30   (less than 3 correct answers)
 const score1 = document.getElementById('score1');
 const score2 = document.getElementById('score2');
 const score3 = document.getElementById('score3');
 const score4 = document.getElementById('score4');
 const scoreGame = document.getElementById('score');
+
+//finishing the game
 const buttonFinish = document.querySelector('#btnFinish');
 buttonFinish.addEventListener('click', (event) => {
     card.classList.remove('quizhub__display__block');
