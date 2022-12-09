@@ -267,5 +267,5 @@ exitGame.addEventListener('click', (event) => {
     result.classList.remove('quizhub__display__block');
     result.classList.add('quizhub__display__none');
     endGame.classList.remove('quizhub__display__none');
-    endGame.classList.add('quizhub__display__block');
+    endGame.classList.add('quizhub__display__flex');
 });

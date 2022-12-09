@@ -26,6 +26,10 @@ body {
     display: block;
 }
 
+.quizhub__display__flex {
+    display: flex;
+}
+
 .quizhub__background__green {
     background-color: #00FF00;
 }
@@ -224,17 +228,13 @@ select {
     background-color: transparent;    
 }
 
-#endGameImg, #score4, #score3, #score2, #score1 {
-    /*background-color: transparent;
-    margin: 0 auto;
-    width: 30vw;
-    height: 40vh;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
-    border-radius: 20px;*/
-    margin: auto;
+#endGameImg, #score4, #score3, #score2, #score1 {    
+    justify-content: center;
+    align-items: center;
     border-radius: 8px;
 }
 
-/*#btnPlayAgain {
-    margin-top: 23vh;
-}*/
+#endGameImg {
+    width: 35vw;
+    height: 50vh;
+}
