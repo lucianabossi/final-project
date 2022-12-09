@@ -183,10 +183,7 @@ select {
     text-align: center;
 }
 
-#questionNumber {
-    /*font-family: 'Roboto mono';
-    font-size: 1.2rem;
-    text-align: right;*/
+#questionNumber {    
     width: 50vw;
     height: 4vh;
     border-radius: 10px;
