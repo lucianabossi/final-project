@@ -152,8 +152,7 @@ const printQuestion = (indexQuestion) => {
 var userScore = 0;
 //checking answers
 
-//getting button back id
-const buttonBack = document.getElementById('btnBack');
+
 
 
 //button ok
@@ -191,7 +190,6 @@ buttonOk.addEventListener('click', (event) => {
         buttonFinish.classList.remove('quizhub__display__none');
         buttonFinish.classList.add('quizhub__display__block');
     }
-    console.log(indexQuestion)
 });
 
 //printing next questions and answers
@@ -205,23 +203,27 @@ buttonNext.addEventListener('click', (event) => {
     document.querySelectorAll('div.quizhub__answers__card').forEach(function (elem) {
         elem.classList.add('quizhub__background__gray');
     });
-    //counting questions   
-    let counter = document.querySelector('#questionNumber');
-    let number = parseInt(counter.innerText)+1;
-    counter.innerText = number+'/10';    
+
+    //progress bar question
+    let counter = document.querySelector('.question-bar');
+    let progress = (indexQuestion+1)*10;
+    const changeProgress = () => {
+        counter.setAttribute('style', 'width: '+ progress + '%' )
+    };
+
+    changeProgress();
+
+    //question counter
+    let currentQuestion = document.querySelector('#questionCounter');
+    let number = parseInt(currentQuestion.innerText)+1;
+    currentQuestion.innerText = number+'/10';    
     buttonNext.classList.remove('quizhub__display__block');
     buttonNext.classList.add('quizhub__display__none');
     buttonOk.classList.remove('quizhub__display__none');
     buttonOk.classList.add('quizhub__display__block');  
     
     //disabling button ok
-    buttonOk.setAttribute('disabled', '');
-
-    //showing button back
-    if(indexQuestion >= 1) {
-        buttonBack.classList.remove('quizhub__display__none');
-        buttonBack.classList.add('quizhub__display__block');
-    }
+    buttonOk.setAttribute('disabled', '');    
 });
 
 //finishing game

@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="shortcut icon" href="./favicon_io (16)/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -28,13 +29,17 @@
         <div class="quizhub__answers__card quizhub__background__gray quizhub__cursor__pointer" id="answer1"></div>
         <div class="quizhub__answers__card quizhub__background__gray quizhub__cursor__pointer" id="answer2"></div>
         <div class="quizhub__answers__card quizhub__background__gray quizhub__cursor__pointer" id="answer3"></div>
+        
+        <div id="questionNumber">            
+            <div class="question-bar" style="width: 10%;"><p id="questionCounter">1/10</p></div>
+        </div>
         <button id="btnOk" class="quizhub__cursor__pointer quizhub__display__block" disabled='disabled'>OK</button>
         <button id="btnNext" class="quizhub__display__none quizhub__cursor__pointer">NEXT</button>
         <button id="btnFinish" class="quizhub__display__none quizhub__cursor__pointer">FINISH</button>
-        <p id="questionNumber">1/10</p>        
+                
     </div>
     <div class="quizhub__score__card quizhub__display__none" id="resultCard">
-        <h3 id="score"></h3>
+        <h2 id="score"></h2>
         <div class="quizhub__display__none" id="score1">
             <img src="great.gif" alt="">
         </div>   

@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto+Mono:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto+Mono:wght@300;400;500;600;700&family=VT323&display=swap');
 
 body {
     margin: 0;
@@ -111,10 +111,14 @@ select {
 #startQuiz, #btnPlayAgain, #btnExitGame {
     background-color: transparent;
     border: none;
-    margin: 5vh auto;
+    margin: 5vh auto 2vh;
     font-family: 'Press Start 2P', cursive;
     color: #FADF6A;
     cursor: pointer;
+}
+
+#btnExitGame {
+    margin-top: 0;
 }
 
 #startQuiz {
@@ -136,7 +140,7 @@ select {
     width: 58vw;
     height: max-content;
     background-color: #F9F9F9;
-    margin: 35px;
+    margin: 25px;
     font-family: 'Roboto mono';
     font-size: 1.7rem;
     text-align: justify;
@@ -148,12 +152,12 @@ select {
     display: block;
     width: 58vw;
     height: max-content;
-    margin: 35px;
+    margin: 25px;
     font-family: 'Roboto mono';
     font-size: 1.5rem;
     text-align: justify;
     line-height: 1cm;
-    text-indent: 0.5cm;
+    text-indent: 0.1cm;
     padding: 10px;
 }
 
@@ -169,10 +173,36 @@ select {
     margin: 10px auto 0;
 }
 
-#questionNumber {
+#questionCounter {
     font-family: 'Roboto mono';
     font-size: 1.2rem;
-    text-align: right;
+    text-align: center;
+}
+
+#questionNumber {
+    /*font-family: 'Roboto mono';
+    font-size: 1.2rem;
+    text-align: right;*/
+    width: 50vw;
+    height: 4vh;
+    border-radius: 10px;
+    margin: 0 auto;
+    background-color: rgba(255, 254, 254, 0.383);
+}
+
+.question-bar {
+    height: 100%;
+    border-radius: 10px;
+    background-color: #08b99ba4;    
+}
+
+#questionCounter {
+    font-family: 'Roboto mono';
+    font-size: 1.2rem;
+    text-align: center;
+    line-height: 1cm;
+    width: 10vw;
+    margin-left: 20vw;
 }
 
 .quizhub__score__card {
@@ -180,7 +210,8 @@ select {
     height: 40vh;
     background-color: transparent;
     margin: 10vh auto 0;
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'VT323', monospace;
+    font-size: 1.5rem;
     text-align: center;
     padding: 20px;
     color: #F9F9F9;
@@ -193,14 +224,16 @@ select {
     background-color: transparent;    
 }
 
-/*#endGameImg, #score4, #score3, #score2, #score1 {
-    background-color: transparent;
+#endGameImg, #score4, #score3, #score2, #score1 {
+    /*background-color: transparent;
     margin: 0 auto;
     width: 30vw;
     height: 40vh;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
-    border-radius: 20px;
-}*/
+    border-radius: 20px;*/
+    margin: auto;
+    border-radius: 8px;
+}
 
 /*#btnPlayAgain {
     margin-top: 23vh;
